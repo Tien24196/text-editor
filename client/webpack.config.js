@@ -42,7 +42,7 @@ module.exports = () => {
 			}),
 			new InjectManifest({
 				swSrc: './src-sw.js',
-				swDest: 'service-worker.js',
+				swDest: 'src-sw.js',
 			}),
     ],
 
@@ -58,9 +58,11 @@ module.exports = () => {
           use: {
             loader: 'babel-loader',
             options: {
-              presets: [
-                ['@babel/preset-env', { targets: "defaults" }]
-              ]
+              presets: ['@babel/preset-env'],
+							plugins: [
+								'@babel/plugin-proposal-object-rest-spread',
+								'@babel/transform-runtime',
+							],
             }
           }
         }
